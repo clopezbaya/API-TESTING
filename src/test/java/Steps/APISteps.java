@@ -24,4 +24,16 @@ public class APISteps {
 
         validator = response.then().statusCode(statusCode);
     }
+
+    @Given("I send the requestt")
+    public void sendRequestt(){
+        request = given().baseUri("https://api.github.com/").contentType(ContentType.JSON);
+    }
+
+    @Then("I get {int} of status codee")
+    public void verifyListt(int statusCode){
+        response = request.when().get("/users/clopezbaya/repos");
+
+        validator = response.then().statusCode(statusCode);
+    }
 }
